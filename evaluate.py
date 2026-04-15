@@ -1,3 +1,4 @@
+import sys
 import numpy as np
 import pandas as pd
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
@@ -28,12 +29,17 @@ def evaluate_models(trained_pipelines, X_test, y_test):
     return results_df, best_model_name
 
 def print_evaluation_table(results_df, best_model_name):
+    # Reconfigure stdout to UTF-8 so ₹ renders on Windows (no-op on Linux/Mac)
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
     print("\nModel Comparison")
-    
+
     display = results_df.copy()
-    display["Mean Absolute Error (MAE)"] = display["Mean Absolute Error (MAE)"].map("₹{:,.2f}".format)
-    display["Root Mean Sq Error (RMSE)"] = display["Root Mean Sq Error (RMSE)"].map("₹{:,.2f}".format)
-    display["R-Squared (R²)"] = display["R-Squared (R²)"].map("{:.4f}".format)
+    display["Mean Absolute Error (MAE)"] = display["Mean Absolute Error (MAE)"].map("Rs.{:,.2f}".format)
+    display["Root Mean Sq Error (RMSE)"] = display["Root Mean Sq Error (RMSE)"].map("Rs.{:,.2f}".format)
+    display["R-Squared (R2)"] = display["R-Squared (R\u00b2)"].map("{:.4f}".format)
+    display = display.drop(columns=["R-Squared (R\u00b2)"], errors="ignore")
 
     print(display.to_string())
     print("-" * 40)

@@ -54,7 +54,7 @@ def tune_best_model(best_name, X_train, y_train, n_iter=30, cv=5):
 
 def print_tuning_results(model_name, best_params, best_rmse):
     print(f"\nTuning Results for {model_name}")
-    print(f"Best RMSE: ₹{best_rmse:,.0f}")
+    print(f"Best RMSE: Rs.{best_rmse:,.0f}")
     print("Best Params:")
     for k, v in best_params.items():
         print(f"  {k.replace('regressor__', '')}: {v}")

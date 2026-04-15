@@ -1,6 +1,8 @@
 import os
 import numpy as np
 import pandas as pd
+import matplotlib
+matplotlib.use("Agg")  # Use non-interactive backend to avoid Tkinter threading errors
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import seaborn as sns

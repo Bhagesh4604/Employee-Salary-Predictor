@@ -35,6 +35,6 @@ if __name__ == "__main__":
     }
     try:
         salary = predict_salary(sample)
-        print(f"Predicted Salary: ₹{salary:,.0f}")
+        print(f"Predicted Salary: Rs.{salary:,.0f}")
     except FileNotFoundError:
         print("Run main.py to train model first.")

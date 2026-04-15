@@ -57,9 +57,9 @@ def main():
 
     y_pred = tuned_pipe.predict(X_test)
     print("Test Performance (Unseen Data):")
-    print(f"Mean Absolute Error (MAE)      : ₹{mean_absolute_error(y_test, y_pred):,.0f} (Avg prediction mistake)")
-    print(f"Root Mean Squared Error (RMSE) : ₹{np.sqrt(mean_squared_error(y_test, y_pred)):,.0f} (Penalizes very wrong predictions)")
-    print(f"R-Squared (R²)                 : {r2_score(y_test, y_pred):.4f} (1.0 is perfect accuracy)\n")
+    print(f"Mean Absolute Error (MAE)      : Rs.{mean_absolute_error(y_test, y_pred):,.0f} (Avg prediction mistake)")
+    print(f"Root Mean Squared Error (RMSE) : Rs.{np.sqrt(mean_squared_error(y_test, y_pred)):,.0f} (Penalizes very wrong predictions)")
+    print(f"R-Squared (R2)                 : {r2_score(y_test, y_pred):.4f} (1.0 is perfect accuracy)\n")
 
     section("Phase 7: Serialize Model")
     save_model(tuned_pipe)
@@ -73,7 +73,7 @@ def main():
     }
     pred = predict_salary(sample)
     print(f"Sample: {sample}")
-    print(f"Predicted Salary: ₹{pred:,.0f}\n")
+    print(f"Predicted Salary: Rs.{pred:,.0f}\n")
 
     print("=" * 50)
     print(f"Pipeline finished in {time.perf_counter() - start:.1f}s")

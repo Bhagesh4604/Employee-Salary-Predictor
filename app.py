@@ -1,7 +1,12 @@
 import streamlit as st
 import base64
 import os
+import sys
+import sklearn
 from inference import predict_salary
+
+st.sidebar.write("Python Path:", sys.executable)
+st.sidebar.write("Sklearn Version:", sklearn.__version__)
 
 def get_base64_img(path):
     if os.path.exists(path):
